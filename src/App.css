@@ -131,7 +131,6 @@ footer .container h3 {
   list-style: none;
   line-height: 1.2;
   font-size: 18px;
-  color: #f4ce14;
 }
 
 .footer-social ul {
@@ -156,4 +155,35 @@ footer .container h3 {
   border-radius: 10px;
   font-size: 18px;
   color: #edefee;
+}
+
+@media only screen and (max-width: 767px) {
+  header {
+    margin: 20px auto;
+    width: 100%;
+    display: block;
+  }
+
+  .hero {
+    display: block;
+    height: 100%;
+  }
+  .hero-image {
+    display: none;
+  }
+  .hero-text p {
+    width: 100%;
+  }
+  .container {
+    width: 100%;
+    padding: 10px;
+  }
+
+  .specials-cards {
+    display: block;
+  }
+
+  footer .container {
+    display: block;
+  }
 }

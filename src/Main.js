@@ -57,7 +57,7 @@ const Main = () => {
               </div>
             </div>
             <div className="special-card">
-              <img src={Chef} alt="" />
+              <img src={Salad} alt="" />
               <div className="special-info">
                 <div className="special-title">
                   <h3>Greek Salad</h3>
