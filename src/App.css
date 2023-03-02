@@ -157,6 +157,12 @@ footer .container h3 {
   color: #edefee;
 }
 
+form {
+  display: grid;
+  max-width: 200px;
+  gap: 20px;
+}
+
 @media only screen and (max-width: 767px) {
   header {
     margin: 20px auto;

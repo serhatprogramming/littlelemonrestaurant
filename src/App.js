@@ -1,15 +1,15 @@
-import Header from "./Header";
-
 import "./App.css";
 import { Route, Routes } from "react-router-dom";
 import HomePage from "./HomePage";
+import BookingPage from "./BookingPage";
+import Header from "./Header";
 
 function App() {
   return (
     <>
       <Routes>
         <Route path="/" element={<HomePage />} />
-        <Route path="/header" element={<Header />} />
+        <Route path="/bookingpage" element={<BookingPage />} />
       </Routes>
     </>
   );

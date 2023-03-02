@@ -9,11 +9,11 @@ const Nav = () => {
         <li>
           <Link to="/">Home</Link>
         </li>
-        <li>
-          <Link to="/Header">About</Link>
-        </li>
+        <li>About</li>
         <li>Menu</li>
-        <li>Reservations</li>
+        <li>
+          <Link to="/bookingpage">Reservations</Link>
+        </li>
         <li>Order Online</li>
         <li>Contact</li>
       </ul>
