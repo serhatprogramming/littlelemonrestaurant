@@ -1,7 +1,7 @@
 import React from "react";
 
-const BookingSlot = ({ availableTime }) => {
-  return <>{availableTime}</>;
+const BookingSlot = ({ time }) => {
+  return <>{time}</>;
 };
 
 export default BookingSlot;

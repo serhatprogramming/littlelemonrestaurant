@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useReducer, useState } from "react";
 import BookingForm from "./BookingForm";
 import Header from "./Header";
 import Footer from "./Footer";
@@ -14,6 +14,17 @@ const BookingPage = () => {
   const [reservedDates, setReservedDates] = useState([]);
   const [reservedTimes, setReservedTimes] = useState([]);
 
+  function updateTimes(resTimes, action) {
+    switch (action.type) {
+      case "update":
+        return action.payload;
+      default:
+        return resTimes;
+    }
+  }
+
+  const [resTimes, dispatch] = useReducer(updateTimes, { times: [] });
+
   return (
     <>
       <Header />
@@ -24,6 +35,8 @@ const BookingPage = () => {
         reservedDates={reservedDates}
         reservedTimes={reservedTimes}
         setReservedTimes={setReservedTimes}
+        resTimes={resTimes}
+        dispatch={dispatch}
       />
       <Footer />
     </>

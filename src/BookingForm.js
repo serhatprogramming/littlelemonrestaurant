@@ -9,6 +9,8 @@ const BookingForm = ({
   reservedDates,
   reservedTimes,
   setReservedTimes,
+  resTimes,
+  dispatch,
 }) => {
   function handleSubmit(e) {
     e.preventDefault();
@@ -32,7 +34,8 @@ const BookingForm = ({
     const reserved = reservedDates
       .filter((reservedDate) => reservedDate.date === availableTimes.date)
       .map((reservedDate) => reservedDate.slots);
-    setReservedTimes(reserved);
+    dispatch({ type: "update", payload: { times: reserved } });
+    // setReservedTimes(reserved);
   }, [availableTimes]);
 
   return (
@@ -90,16 +93,17 @@ const BookingForm = ({
       </form>
       <br />
       <h3>Booked Times on {availableTimes.date}:</h3>
-      {reservedTimes.length > 0 ? (
+      {resTimes.times.length > 0 ? (
         <ul>
-          {reservedTimes.map((time, key) => (
-            <li key={key}>{time}</li>
+          {resTimes.times.map((time, key) => (
+            <li key={key}>
+              <BookingSlot time={time} />
+            </li>
           ))}
         </ul>
       ) : (
         <p>No Reservation for the date</p>
       )}
-      <BookingSlot availableTimes={availableTimes} />
     </>
   );
 };
