@@ -73,6 +73,7 @@ const BookingForm = ({
           min="1"
           max="10"
           id="guests"
+          data-testid="guests-test"
           onChange={(e) => {
             setAvailableTimes({ ...availableTimes, guests: e.target.value });
             if (e.target.value > 10 || e.target.value < 1)

@@ -1,4 +1,4 @@
-import { render, screen } from "@testing-library/react";
+import { fireEvent, render, screen } from "@testing-library/react";
 import { BrowserRouter as Router } from "react-router-dom";
 import Main from "./Main";
 import BookingForm from "./BookingForm";
@@ -36,6 +36,9 @@ test("validation check submit button", () => {
       />
     </Router>
   );
+
+  const guestNumber = screen.getByTestId("guests-test");
+  expect(guestNumber).toHaveValue(1);
 
   const submit = screen.getByRole("button");
   expect(submit).toBeInTheDocument();
