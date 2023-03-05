@@ -1,17 +1,17 @@
 import React from "react";
 import BookingSlot from "./BookingSlot";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 const BookingForm = ({
   availableTimes,
   setAvailableTimes,
   setReservedDates,
   reservedDates,
-  reservedTimes,
-  setReservedTimes,
   resTimes,
   dispatch,
 }) => {
+  const [submitDisabled, setSubmitDisabled] = useState(false);
+
   function handleSubmit(e) {
     e.preventDefault();
     setReservedDates([...reservedDates, availableTimes]);
@@ -73,9 +73,12 @@ const BookingForm = ({
           min="1"
           max="10"
           id="guests"
-          onChange={(e) =>
-            setAvailableTimes({ ...availableTimes, guests: e.target.value })
-          }
+          onChange={(e) => {
+            setAvailableTimes({ ...availableTimes, guests: e.target.value });
+            if (e.target.value > 10 || e.target.value < 1)
+              setSubmitDisabled(true);
+            else setSubmitDisabled(false);
+          }}
           value={availableTimes.guests}
         />
         <label htmlFor="occasion">Occasion</label>
@@ -89,7 +92,16 @@ const BookingForm = ({
           <option>Birthday</option>
           <option>Anniversary</option>
         </select>
-        <button type="submit">Make Your reservation</button>
+        {submitDisabled ? (
+          <p style={{ color: "tomato" }}>
+            The number of guests should be between 1 and 10
+          </p>
+        ) : (
+          ""
+        )}
+        <button type="submit" disabled={submitDisabled}>
+          Make Your reservation
+        </button>
       </form>
       <br />
       <h3>Booked Times on {availableTimes.date}:</h3>
